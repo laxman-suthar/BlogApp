@@ -1,0 +1,39 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+<link rel="stylesheet" href="{% static 'home.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container-fluid ">
+    <div class="row pt-5 ">
+        <div class="col-12 text-center">
+            {% if user.is_authenticated %}
+            <h3>Hii {{user.first_name}}  {{user.last_name}}, Welcome to Our blog site </h3>
+            <p>here you can create your blog and save them for future</p>
+            {% else %}
+            <h3>Hii, Welcome to Our blog site </h3>
+            <p>here you can create your blog and save them for future</p>
+            {% endif %}
+        </div>
+    </div>
+    {% if user.is_authenticated %}
+    <div class="pt-5 row justify-content-evenly">
+        <div class="col-4 bg-light card pt-4 text-center shadow-lg">
+            <h4>Click below to create your blog</h4>
+            <div class="text-center mt-3"><button class="col-4 btn btn-outline-primary" ><a href="{% url 'blog' %}" style="text-decoration: none;">Click here</a></button></div>
+        </div>
+            
+
+        
+        <div class="col-4 bg-light card text-center pb-3 pt-4 shadow-lg">
+            <h4>here you get all your blogs</h4>
+            <p>for read all your blogs </p> 
+            <div class="text-center"><button class="col-4 btn btn-outline-primary"  ><a href="{% url 'list' %}" style="text-decoration: none;">Click here</a></button></div>
+        </div>
+    </div>
+    {% else %}
+    <h3 class="text-center">for create your blogs please<a href="{% url 'login' %}" style="text-decoration: none;"> login </a> or <a href="{% url 'register' %}" style="text-decoration: none;"> register </a></h3>
+    {% endif %}
+</div>
+{% endblock %}  

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <title>Login</title>
+</head>
+<style>
+  .row{
+margin-top: 130px;
+
+  }
+  .col-6{
+    background-color: #b4b4b4;
+    border-radius: 10px !important;
+  }
+</style>
+<body>
+    
+  <div class="container-fluid ">
+    <div class="row justify-content-center background-radial-gradient">
+        <div class="col-6  pt-5 shadow-lg">
+           <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+       
+          
+            {% if field.html_name == 'username' %}
+          
+            
+                <label class="text-capitalize mb-2"  for="{{field.id_for_label}}">{{field.html_name}} </label><br>
+                <input class="form-control" id="{{ field.id_for_label }}" maxlength="30" name="{{field.html_name}}" placeholder="enter {{field.html_name}}" type="text" autocomplete="on"/> 
+               <div><p class="text-primary">{{ field.errors }}</p> </div>
+           
+            {% elif field.html_name == 'email' %}
+           
+              <label class="text-capitalize mb-2" for="{{field.id_for_label}}">{{field.html_name}} </label><br>
+              <input class="form-control" id="{{ field.id_for_label }}" maxlength="30" name="{{field.html_name}}" placeholder="enter {{field.html_name}}" type="email" autocomplete="on"/> 
+             <div><p class="text-primary">{{ field.errors }}</p> </div>
+          
+             {% else %}
+             <label class="text-capitalize mb-2" for="{{field.id_for_label}}">{{field.html_name}} </label><br>
+              <input class="form-control" id="{{ field.id_for_label }}" maxlength="30" name="{{field.html_name}}" placeholder="enter {{field.html_name}}" type="password" autocomplete="on"/> 
+             <div><p class="text-primary">{{ field.errors }}</p> </div>
+          {% endif %}
+        {% endfor %}
+            
+            <div class="text-center mb-3"><button class=" btn btn-outline-primary">submit</button></div>
+        </div>
+      
+    </div>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
+</html>
+
+

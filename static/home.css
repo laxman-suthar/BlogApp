@@ -1,0 +1,11 @@
+.container-fluid{
+    height: 100vh;
+    color: white;
+    background-color: #b4b4b4;
+}
+.card{
+    color: #000;
+}
+.btn:hover{
+    background-color: #b4b4b4 !important;
+}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid ">
+    <div class="row justify-content-center background-radial-gradient">
+        <div class="col-6  pt-5 shadow-lg">
+           <form method="post">
+            {% csrf_token %}
+            {% for field in form %}
+          
+           
+             <label class="text-capitalize mb-2"  for="{{field.id_for_label}}">{{field.html_name}} </label><br>
+                <input class="form-control" id="{{ field.id_for_label }}" maxlength="30" name="{{field.html_name}}" placeholder="enter {{field.html_name}}" value="{{field.value}}" type="text" autocomplete="on"/> 
+               <div><p class="text-danger">{{ field.errors }}</p> </div>
+         
+        {% endfor %}
+            
+            <div class="text-center mb-3"><button class=" btn btn-outline-primary">submit</button></div>
+        </div>
+      
+    </div>
+  </div>
+  
+{% endblock %}

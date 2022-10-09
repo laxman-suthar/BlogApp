@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}{% endblock %}
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand text-light ps-5" href="/home">My Blog</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/home/">Home</span></a>
+            </li>
+            
+          {% if user.is_authenticated %}
+            <li class="nav-item"><a class="nav-link">{{user.username}}</a></li>
+           
+            <li class="nav-item"><a class="nav-link" href="{% url 'profile' pk=user.id %}"> Edit Profile</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'password' %}"> change password</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">logout</a></li>
+            {% else %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}"> Login</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Sign Up</a></li>
+            {% endif %}
+             
+          </ul>
+         
+        </div>
+        
+      </nav>
+      {% block content %}{% endblock %}  
+      
+</body>
+</html>
+<!--  -->
