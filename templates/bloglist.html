@@ -17,8 +17,8 @@
                   </h2>
                   <div id="{{blog.blog_title}}1" class="accordion-collapse collapse" aria-labelledby="{{blog.blog_title}}" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
-                      <button class="btn btn-dark"><a href="{% url 'detail' pk=blog.id %}">view</a></button>
-                      <button class="btn btn-danger"><a href="{% url 'delete' pk=blog.id %}">delete</a></button>
+                      <button class="btn btn-dark text-light"><a href="{% url 'detail' pk=blog.id %}" style="text-decoration: none;">view</a></button>
+                      <button class="btn btn-danger text-light"><a href="{% url 'delete' pk=blog.id %}" style="text-decoration: none;">delete</a></button>
                     </div>
                   </div>
                 </div>

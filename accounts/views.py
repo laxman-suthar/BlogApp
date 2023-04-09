@@ -13,14 +13,16 @@ from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
 
 from django.contrib.auth.views import PasswordChangeView
-# class Login(LoginView):
-#     authentication_form
+class Login(LoginView):
+    authentication_form=AuthenticationForm
+    template_name="login.html"
+    success_url=reverse_lazy("home")
 
 class Register(CreateView):
    form_class=UserCreationForm
    template_name="register.html"
    
-   success_url=reverse_lazy("home")
+   success_url=reverse_lazy("login")
 
 def logout_view(request):
     messages.success(request,"you are logged out")

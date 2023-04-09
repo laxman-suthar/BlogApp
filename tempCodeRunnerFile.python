@@ -1,0 +1,4 @@
+name=input("Enter your name")
+college_name=input("Enter your college name")
+address_name=input("Enter you address")
+print("Name is:",name,"\ncollege_name is:",college_name,"address_name")
